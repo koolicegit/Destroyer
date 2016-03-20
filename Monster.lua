@@ -4,52 +4,44 @@
 -- Copyright 2016 All Rights Reserved
 -- "Buffer" art by Megan Clark NerdyNovelty.com
 
-
+local Monster = require("Monster")
 -- beginning code
-display.setStatusBar(display.HiddenStatusBar)
+local Monster = Monster:extends()
 
-local centerX = display.contentCenterX
-local centerY = display.contentCenterY
+function Monster:__init(name, health, damage)
+  Monster.super.__init(self, name, health, damage)
+end
 
--- set up forward references
+function Monster:__init(name, health, damage, energy)
+  self.name = name
+  self.health = fullHealth = health
+  self.damage = damage
+  fullEnergy = self.energy = energy
+end
 
--- preload audio
-
--- create play screen
-local background = display.newImage("background.png")
-background.y = 140
-background.alpha = 0
-
-local hero = display.newImage("hero.png")
-hero.x = display.contentWidth + 60
-hero.y = centerY
-hero.alpha = 0
-transition.to( hero, { time=2500, alpha=1, x=centerX,} )
-transition.to( background, { time=2500, alpha=1, y=centerY, x=centerX} )
-
--- game functions
-local function spawnEnemy()
-
+function Monster:hit(amount)
+  self.health = self.health - amount
+  if (self.health < 0 ) then
+    self.health = 0
+  end
 end
 
 
-local function startGame()
-	
+function Monster:energy(amount)
+  self.energy = self.energy - amount
+  if (self.energy < 0) then
+    self.energy = 0
 end
 
+function Monster:recharge()
+-- future code for energy recharge rate
+end
 
-local function heroDamage()
+function Monster:attack( character )
+  if monster:is(Monster) then
+    character:hit(self.damage)
+  end
 
 end
 
-
-local function hitHero(obj)
-
-end
-
-
-local function smashEnemy(event)
-
-end
-
-startGame()
+return Monster

@@ -3,53 +3,51 @@
 -- Version: 1.0
 -- Copyright 2016 All Rights Reserved
 -- "Buffer" art by Megan Clark NerdyNovelty.com
-
+-- Character Class
 
 -- beginning code
-display.setStatusBar(display.HiddenStatusBar)
+local Character = class()
+Character.__name = "Character"
+local fullHealth = health
+local fullEnergy = 100
+  
+function Character:__init(name, health, damage, energy)
+  self.name = name
+  self.health = fullHealth = health
+  self.damage = damage
+  fullEnergy = self.energy = energy
+end
 
-local centerX = display.contentCenterX
-local centerY = display.contentCenterY
+function Character:hit(amount)
+  self.health = self.health - amount
+  if (self.health < 0 ) then
+    self.health = 0
+  end
+end
 
--- set up forward references
-
--- preload audio
-
--- create play screen
-local background = display.newImage("background.png")
-background.y = 140
-background.alpha = 0
-
-local hero = display.newImage("hero.png")
-hero.x = display.contentWidth + 60
-hero.y = centerY
-hero.alpha = 0
-transition.to( hero, { time=2500, alpha=1, x=centerX,} )
-transition.to( background, { time=2500, alpha=1, y=centerY, x=centerX} )
-
--- game functions
-local function spawnEnemy()
-
+function Character:heal(amount)
+  self.health = self.health + amount
+  if (self.health > fullHealth) then
+    self.health = fullHealth
+  end
 end
 
 
-local function startGame()
-	
+function Character:energy(amount)
+  self.energy = self.energy - amount
+  if (self.energy < 0) then
+    self.energy = 0
 end
 
+function Character:recharge()
+-- future code for energy recharge rate
+end
 
-local function heroDamage()
+function Character:attack( monster )
+  if monster:is(Monster) then
+    monster:hit(self.damage)
+  end
 
 end
 
-
-local function hitHero(obj)
-
-end
-
-
-local function smashEnemy(event)
-
-end
-
-startGame()
+return Character
