@@ -24,11 +24,8 @@ local hero = display.newImage("hero.png")
 hero.x = display.contentWidth + 60
 hero.y = centerY
 hero.alpha = 0
-hero.xScale = 0.1
-hero.yScale = 0.1
-transition.to( hero, { time=3500, alpha=1, xScale=1, yScale=1, x=centerX,} )
-transition.to( background, { time=3500, alpha=1, y=centerY, x=centerX} )
-
+transition.to( hero, { time=2500, alpha=1, x=centerX,} )
+transition.to( background, { time=2500, alpha=1, y=centerY, x=centerX} )
 
 -- game functions
 local function spawnEnemy()
