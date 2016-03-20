@@ -3,7 +3,7 @@
 -- Version: 1.0
 -- Copyright 2016 All Rights Reserved
 -- "Buffer" art by Megan Clark NerdyNovelty.com
-require("modules.30logglobal")
+require("30log-global")
 -- beginning code
 local Character = require("Character")
 local Monster = require("Monster")
@@ -31,4 +31,4 @@ transition.to( hero, { time=3500, alpha=1, xScale=1, yScale=1, x=centerX,} )
 transition.to( background, { time=3500, alpha=1, y=centerY, x=centerX} )
 
 
-startGame()
+--startGame()

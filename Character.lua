@@ -8,14 +8,16 @@
 -- beginning code
 local Character = class()
 Character.__name = "Character"
-local fullHealth = health
+local fullHealth = 1000
 local fullEnergy = 100
   
 function Character:__init(name, health, damage, energy)
   self.name = name
-  self.health = fullHealth = health
+  self.health = health
   self.damage = damage
-  fullEnergy = self.energy = energy
+  fullHealth = health
+  fullEnergy = energy
+  self.energy = energy
 end
 
 function Character:hit(amount)
@@ -47,7 +49,7 @@ function Character:attack( monster )
   if monster:is(Monster) then
     monster:hit(self.damage)
   end
-
 end
 
 return Character
+end

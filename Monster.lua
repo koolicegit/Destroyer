@@ -4,19 +4,17 @@
 -- Copyright 2016 All Rights Reserved
 -- "Buffer" art by Megan Clark NerdyNovelty.com
 
-local Monster = require("Monster")
+
 -- beginning code
-local Monster = Monster:extends()
+local Monster = class()
+local fullHealth = 500
+
 
 function Monster:__init(name, health, damage)
-  Monster.super.__init(self, name, health, damage)
-end
-
-function Monster:__init(name, health, damage, energy)
   self.name = name
-  self.health = fullHealth = health
+  self.health = health
   self.damage = damage
-  fullEnergy = self.energy = energy
+  fullHealth = health
 end
 
 function Monster:hit(amount)
@@ -45,3 +43,4 @@ function Monster:attack( character )
 end
 
 return Monster
+end
