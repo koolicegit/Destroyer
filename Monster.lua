@@ -7,6 +7,8 @@
 
 -- beginning code
 local Monster = class()
+Monster.__name = "Monster"
+local Monster = class()
 local fullHealth = 500
 
 
