@@ -31,6 +31,7 @@ function Monster:energy(amount)
   self.energy = self.energy - amount
   if (self.energy < 0) then
     self.energy = 0
+  end
 end
 
 function Monster:recharge()
@@ -45,4 +46,3 @@ function Monster:attack( character )
 end
 
 return Monster
-end
