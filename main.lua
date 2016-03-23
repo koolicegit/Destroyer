@@ -8,7 +8,6 @@ require("30log-global")
 local Character = require("Character")
 local Monster = require("Monster")
 display.setStatusBar(display.HiddenStatusBar)
-
 local centerX = display.contentCenterX
 local centerY = display.contentCenterY
 
