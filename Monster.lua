@@ -6,43 +6,37 @@
 
 
 -- beginning code
-local Monster = class()
-Monster.__name = "Monster"
-local Monster = class()
-local fullHealth = 500
 
-
-function Monster:__init(name, health, damage)
-  self.name = name
-  self.health = health
-  self.damage = damage
-  fullHealth = health
+class("Monster")
+local fullHealth = 500;
+function Monster:Monster(name, health)     
+  self.name = name;
+  self.health = health;  
+  self.amount = 0
 end
 
-function Monster:hit(amount)
-  self.health = self.health - amount
-  if (self.health < 0 ) then
-    self.health = 0
+function Monster:hit(event)
+  self.health = self.health - self.amount
+  print(self.health)
+  if (self.health < 0 or self.health == 0) then
+    self.health = 0;
+	local obj = event.target;
+	display.remove( obj )
+	transition.cancel ( event.target.trans )
+	print("you are dead")
   end
+
 end
 
-
-function Monster:energy(amount)
-  self.energy = self.energy - amount
+function Monster:energy()
+  self.energy = self.energy - self.amount
   if (self.energy < 0) then
     self.energy = 0
   end
 end
 
-function Monster:recharge()
--- future code for energy recharge rate
-end
-
-function Monster:attack( character )
-  if monster:is(Monster) then
-    character:hit(self.damage)
-  end
-
+function Monster:recharge(amount)
+  -- code for energy recharge
 end
 
 return Monster
