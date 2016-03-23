@@ -52,4 +52,9 @@ function Character:attack( monster )
   end
 end
 
+function Character:move(event)
+
+end
+
+
 return Character
